@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Send, Instagram, Twitter, Linkedin, Github } from 'lucide-react';
+import { ArrowUpRight, Send, Instagram, Twitter, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', project: '' });
@@ -109,13 +109,15 @@ const Footer: React.FC = () => {
 
             <div className="bg-light p-8 border-2 border-dark shadow-neo flex flex-col justify-between flex-grow">
               <div className="flex justify-between items-start">
-                {/* LOGO PLACEHOLDER */}
+                {/* LOGO */}
                 <div className="flex flex-col">
-                  {/* REPLACE WITH SVG */}
-                  <div className="h-12 w-48 bg-white border-2 border-dark shadow-neo-sm flex items-center justify-center mb-2 overflow-hidden">
-                     <span className="font-syne font-extrabold text-dark text-xl tracking-tighter">[ LOGO ]</span>
+                  <div className="h-12 w-48 bg-white border-2 border-dark shadow-neo-sm flex items-center justify-center mb-2 overflow-hidden px-2">
+                     <img 
+                        src="/crative-logo.svg" 
+                        alt="Crative Studio Logo" 
+                        className="w-full h-full object-contain" 
+                      />
                   </div>
-                  <span className="text-[10px] font-jakarta font-bold tracking-[0.2em] text-dark/40 uppercase">STUDIO DESIGN</span>
                 </div>
                 <ArrowUpRight className="text-dark w-8 h-8" />
               </div>
