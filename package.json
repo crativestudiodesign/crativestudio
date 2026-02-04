@@ -1,0 +1,35 @@
+{
+  "name": "crative-studio",
+  "version": "1.0.0",
+  "description": "A neo-brutalist branding agency website featuring a bento-grid layout.",
+  "main": "index.tsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/crative-studio.git"
+  },
+  "keywords": [
+    "react",
+    "branding",
+    "neo-brutalism",
+    "tailwindcss",
+    "vite"
+  ],
+  "author": "Crative Studio",
+  "license": "MIT",
+  "dependencies": {
+    "lucide-react": "^0.563.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.2.0"
+  }
+}
