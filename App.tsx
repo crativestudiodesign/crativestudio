@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Process from './components/Process';
 import Portfolio from './components/Portfolio';
 import Services from './components/Services';
-import BentoGrid from './components/BentoGrid';
 import Footer from './components/Footer';
 
 function App() {
@@ -19,9 +18,6 @@ function App() {
 
         {/* Highlighted Case Studies */}
         <Portfolio />
-
-        {/* Feature Grid with AI Integration */}
-        <BentoGrid />
 
         {/* Detailed Service Pillars */}
         <Services />
