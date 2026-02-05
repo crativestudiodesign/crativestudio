@@ -1,14 +1,38 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Send, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Send, Instagram, Twitter, Linkedin, Loader2 } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', project: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message sent! Our team will reach out soon.');
-    setFormData({ name: '', email: '', project: '' });
+    setIsSubmitting(true);
+
+    // Persiapan Data
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    
+    // URL Google Script (GANTI TEXT DI BAWAH INI DENGAN URL DARI LANGKAH 1)
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyz3am0gnGsyF0dkjf_0n1WNudLd80VAddoYLANMtzWYGqcG0IUvyCZ4Z8yQpWnVIreww/exec";
+
+    try {
+      await fetch(scriptURL, {
+        method: 'POST',
+        body: data,
+        mode: 'no-cors' // Penting agar tidak error CORS di browser
+      });
+
+      // Jika berhasil
+      alert('Message sent! Our team will reach out soon.');
+      setFormData({ name: '', email: '', project: '' });
+    } catch (error) {
+      // Jika gagal
+      console.error('Error!', error);
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -41,10 +65,12 @@ const Footer: React.FC = () => {
           {/* Inquiry Form Bento Box */}
           <div className="bg-white p-8 border-2 border-dark shadow-neo rotate-[-1deg] hover:rotate-0 transition-transform duration-500">
             <h3 className="font-syne font-bold text-dark text-2xl mb-6 uppercase tracking-tight">Send an Inquiry</h3>
+            
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <input 
                   type="text" 
+                  name="name" // WAJIB ADA
                   placeholder="NAME"
                   required
                   className="w-full bg-light border-2 border-dark p-4 font-jakarta font-bold text-dark placeholder:text-gray-400 focus:outline-none focus:bg-white transition-colors"
@@ -55,6 +81,7 @@ const Footer: React.FC = () => {
               <div>
                 <input 
                   type="email" 
+                  name="email" // WAJIB ADA
                   placeholder="EMAIL"
                   required
                   className="w-full bg-light border-2 border-dark p-4 font-jakarta font-bold text-dark placeholder:text-gray-400 focus:outline-none focus:bg-white transition-colors"
@@ -64,6 +91,7 @@ const Footer: React.FC = () => {
               </div>
               <div>
                 <textarea 
+                  name="project" // WAJIB ADA
                   placeholder="TELL US ABOUT THE PROJECT"
                   rows={3}
                   className="w-full bg-light border-2 border-dark p-4 font-jakarta font-bold text-dark placeholder:text-gray-400 focus:outline-none focus:bg-white transition-colors resize-none"
@@ -73,9 +101,14 @@ const Footer: React.FC = () => {
               </div>
               <button 
                 type="submit"
-                className="w-full bg-primary text-white font-syne font-extrabold py-4 px-8 border-2 border-dark shadow-neo-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-3 group"
+                disabled={isSubmitting}
+                className="w-full bg-primary text-white font-syne font-extrabold py-4 px-8 border-2 border-dark shadow-neo-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-3 group disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                SUBMIT PROJECT <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                {isSubmitting ? (
+                  <>SENDING... <Loader2 className="animate-spin" size={20}/></>
+                ) : (
+                  <>SUBMIT PROJECT <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /></>
+                )}
               </button>
             </form>
           </div>
