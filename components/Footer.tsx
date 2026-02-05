@@ -53,10 +53,10 @@ const Footer: React.FC = () => {
           </h2>
           
           <a 
-            href="mailto:hello@crativestudiodesign.com" 
+            href="mailto:crativestudiodesign@gmail.com" 
             className="group inline-block font-syne font-bold text-2xl md:text-5xl lg:text-6xl text-white hover:text-accent transition-colors duration-300 break-all"
           >
-            hello@crativestudiodesign.com
+            crativestudiodesign@gmail.com
             <div className="h-1 w-full bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left mt-2"></div>
           </a>
         </div>
@@ -133,9 +133,9 @@ const Footer: React.FC = () => {
               <div className="bg-primary p-6 border-2 border-dark shadow-neo -rotate-[1deg] hover:rotate-0 transition-transform duration-500">
                 <h4 className="font-syne font-bold text-white text-sm uppercase mb-4 tracking-widest">Office</h4>
                 <p className="font-jakarta font-bold text-white/90 text-sm leading-tight">
-                  123 Design Blvd,<br />
-                  Creative District,<br />
-                  Cloud City 90210
+                  Pondok Kelapa,<br />
+                  Jakarta,<br />
+                  Indonesia
                 </p>
               </div>
             </div>
